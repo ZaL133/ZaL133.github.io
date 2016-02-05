@@ -3,11 +3,18 @@ body {
     font-size: 14px;
     padding: 0;
     margin: 0;
+    background: rgba(70, 70, 70, .2);
+
 }
 
 #banner {
     background-color: rgba(20, 100, 27, .5);
-    height: 150px;
+    height: 50px;
     font-size: 24px;
     font-weight: bold;
+    padding: 25px;
+}
+
+#body {
+    padding: 10px;
 }
