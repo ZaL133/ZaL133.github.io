@@ -7,4 +7,7 @@ body {
 
 #banner {
     background-color: rgba(20, 100, 27, .5);
+    height: 150px;
+    font-size: 24px;
+    font-weight: bold;
 }
