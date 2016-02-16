@@ -1,15 +1,4 @@
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>More dependable than (my) memory</title>
-        <link type="text/css" rel="stylesheet" href="/css/site.css" />
-    </head>
-    <body>
-        <div id='banner'>
-            Home
-        </div>
-        <div id="body">
-            <p>
+<p>
     This blog aims to provide a place for me to document crap that is one of 
     <ol>
         <li>A pain to find</li>
@@ -25,6 +14,3 @@
         <li><a href="2016-02-05-Redirect/index.html">Redirect (MVC)</a></li>
     </ul>
 </div>
-        </div>
-    </body>
-</html>

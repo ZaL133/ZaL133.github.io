@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>More dependable than (my) memory</title>
+        <link type="text/css" rel="stylesheet" href="/css/site.css" />
+    </head>
+    <body>
+        <div id='banner'>
+            Home
+        </div>
+        <div id="body">
+            {{BODY}}
+        </div>
+    </body>
+</html>
