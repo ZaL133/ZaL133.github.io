@@ -9,8 +9,6 @@
 </p>
 
 <div>
-    Blog Posts
-    <ul>
-        <li><a href="2016-02-05-Redirect/index.html">Redirect (MVC)</a></li>
-    </ul>
+{{POSTLIST}}
 </div>
+
