@@ -3,6 +3,8 @@
         <meta charset="utf-8" />
         <title>More dependable than (my) memory</title>
         <link type="text/css" rel="stylesheet" href="/css/site.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
     </head>
     <body>
         <div id='banner'>
@@ -21,7 +23,7 @@
 
 <p>Without being super familiar with querying against XML data in MSSQL, this took quite a bit of research. Posting the result </p>
 
-<pre class='sql'>
+<pre><code class="sql">
 WITH x AS 
 (
        SELECT FormId, e.Name, CAST(FormXml AS Xml) FormXml 
@@ -53,7 +55,11 @@ SELECT
 FROM y 
 -- WHERE Enabled = 'true' -- This will exclude non-attribute related rows
 ORDER BY y.Entity, y.HandlerName, y.Library, y.FunctionName
+</code>
 </pre>  
         </div>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
     </body>
 </html>

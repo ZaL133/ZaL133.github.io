@@ -10,7 +10,7 @@ This is one of the most likely areas to break during an upgrade, so I wanted to 
 
 Without being super familiar with querying against XML data in MSSQL, this took quite a bit of research. Posting the result 
 
-<pre class='sql'>
+<pre><code class="sql">
 WITH x AS 
 (
        SELECT FormId, e.Name, CAST(FormXml AS Xml) FormXml 
@@ -42,4 +42,5 @@ SELECT
 FROM y 
 -- WHERE Enabled = 'true' -- This will exclude non-attribute related rows
 ORDER BY y.Entity, y.HandlerName, y.Library, y.FunctionName
+</code>
 </pre>  

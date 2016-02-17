@@ -1,0 +1,41 @@
+<script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<input type="text" id="iSearch" />
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<script>
+    var postSummaries = [];
+    $(function() {
+        $.ajax("/js/postSummaries.json")
+         .done(function(results) {
+             postSummaries = results;
+         });
+         
+       $("#iSearch").keyup(function() {
+          var searchTerm = $(this).val();
+          
+       });
+    });
+    
+    function findPosts(searchTerm) {
+        var rv = [];
+        for(var i = 0; i < postSummaries.length; i++) {
+            var post = postSummaries[i];
+            
+            if (post.PostTitle.indexOf(searchTerm) > -1) {
+                rv.push(post);
+            }
+        }
+        return rv;
+    }
+</script>
