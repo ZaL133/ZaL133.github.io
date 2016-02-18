@@ -4,15 +4,10 @@ body {
     padding: 0;
     margin: 0;
     background: rgba(70, 70, 70, .2);
-    max-width: 1280px;
 }
 
-#banner {
+header {
     background-color: rgba(20, 100, 27, .5);
-    height: 50px;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 25px;
 }
 
 #body {

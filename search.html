@@ -1,20 +1,48 @@
-<script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>More dependable than (my) memory</title>
+        <link type="text/css" rel="stylesheet" href="/css/site.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        <!-- Scripts --> 
+        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>        
+    </head>
+    <body>
+        <header class="navbar navbar-static-top bs-docs-nav">
+            <nav class="navbar navbar-fixed-top">
+                <div id='banner' class="container">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/search.html">Search</a></li>
+                        <li><a href="/tags.html">Tags</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="body" class="container">
+            <input type="text" id="iSearch" />
 
-<input type="text" id="iSearch" />
-
-<table>
+<table class='table'>
     <thead>
         <tr>
             <th>Date</th>
             <th>Title</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="searchBody">
     </tbody>
 </table>
 
 <script>
-    var postSummaries = [];
+    var postSummaries = [],
+        rowTemplate = "<tr><td>{{DATE}}</td><td><a href='{{LINK}}'>{{TITLE}}</a></td></tr>";
+        
     $(function() {
         $.ajax("/js/postSummaries.json")
          .done(function(results) {
@@ -22,20 +50,45 @@
          });
          
        $("#iSearch").keyup(function() {
-          var searchTerm = $(this).val();
+          var searchTerm = $(this).val(),
+              searchBody = $("#searchBody");
+              
+          var matches = findPosts(searchTerm);
           
+          // Clear out the old results
+          searchBody.html("");
+          
+          
+          for(var i = 0; i < matches.length; i++) {
+              var match = matches[i];
+              searchBody.append(rowTemplate.replace("{{DATE}}", match.PostDate)
+                                           .replace("{{TITLE}}", match.PostTitle)
+                                           .replace("{{LINK}}", "/Posts/" + match.Key)); 
+          }
        });
     });
     
     function findPosts(searchTerm) {
         var rv = [];
+        
+        // No term - no results
+        if (!searchTerm) {
+            return rv;
+        }
+        
         for(var i = 0; i < postSummaries.length; i++) {
             var post = postSummaries[i];
             
-            if (post.PostTitle.indexOf(searchTerm) > -1) {
+            if (post.PostTitle.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
                 rv.push(post);
             }
         }
         return rv;
     }
 </script>
+        </div>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+    </body>
+</html>
