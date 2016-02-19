@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>More dependable than (my) memory</title>
+        <link type="text/css" rel="stylesheet" href="/css/site.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        <!-- Scripts --> 
+        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>        
+    </head>
+    <body>
+        <header class="navbar navbar-static-top bs-docs-nav">
+            <nav class="navbar navbar-fixed-top">
+                <div id='banner' class="container">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/search.html">Search</a></li>
+                        <li><a href="/tags.html">Tags</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="body" class="container">
+            <p><strong>I can't seem to get XrmToolbox to connect to Dynamics 2016 which is configured for claims based authentication.</strong> </p>
+
+<h2>Research</h2>
+
+<p>XrmToolbox uses the MscrmTools.Xrm.Connection </p>
+
+<p>MscrmTools.Xrm.Connection uses CrmServiceClient
+    https://github.com/MscrmTools/MscrmTools.Xrm.Connection/blob/master/McTools.Xrm.Connection/ConnectionDetail.cs</p>
+
+<p>I can't get a simple app using CrmServiceClient to log in to Crm 2016 IFD</p>
+
+<pre><code>    class Program
+    {
+        private static readonly CrmServiceClient _crmClient = new Microsoft.Xrm.Tooling.Connector.CrmServiceClient(ConfigurationManager.AppSettings["CrmConnectionString"]);
+        private static readonly IOrganizationService _service = _crmClient.OrganizationWebProxyClient ?? (IOrganizationService)_crmClient.OrganizationServiceProxy;
+
+        static void Main(string[] args)
+        {
+            using (var ctx = new gnyhacontext(_service))
+            {
+                foreach (var account in ctx.AccountSet.Where(x => x.Name.StartsWith("Al")))
+                {
+                    Console.WriteLine("Name: {0}", account.Name);
+                }
+            }
+
+            Console.WriteLine("Done!\nPress any key to continue...");
+            Console.ReadKey();
+        }
+    }</code></pre>
+
+<p>Looking through the crm sdk sample code, I put together a simple connection using their methods. This DOES work </p>
+
+<pre><code>        static void Main(string[] args)
+        {
+            var organizatonUri = new Uri("https://crmdev.gnyha.org/Dynamics/XRMServices/2011/Organization.svc");
+            AuthenticationCredentials credentials = new AuthenticationCredentials();
+            credentials.ClientCredentials.UserName.UserName = "username";
+            credentials.ClientCredentials.UserName.Password = "password";
+
+            var serviceManagement = ServiceConfigurationFactory.CreateManagement<IOrganizationService>(organizatonUri);
+            AuthenticationCredentials token = serviceManagement.Authenticate(credentials);
+
+            var organizationServiceProxy = new OrganizationServiceProxy(serviceManagement, token.SecurityTokenResponse);
+            organizationServiceProxy.EnableProxyTypes();
+
+            using (var ctx = new gnyhacontext(organizationServiceProxy))
+            {
+                foreach (var account in ctx.AccountSet.Where(x => x.Name.StartsWith("Al")))
+                {
+                    Console.WriteLine("Name: {0}", account.Name);
+                }
+            }
+
+            Console.WriteLine("Done!\nPress any key to continue...");
+            Console.ReadKey();
+        }</code></pre>
+        </div>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+    </body>
+</html>

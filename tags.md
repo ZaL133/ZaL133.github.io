@@ -13,7 +13,16 @@
              
              var tagList = $("#tagList");
              for(var i = 0; i < tags.length; i++) {
-                 tagList.append("<li>" + tags[i].TagName + "<ul><li><a href='/Posts/" + tags[i].PostKeys[0] + "'>" + tags[i].PostKeys[0] + "</a></li></ul></li>");
+                 var tag = tags[i];
+                 
+                 var list = "<li>" + tag.TagName + "<ul>";
+                 for(var j = 0; j < tag.PostKeys.length; j++) {
+                     var post = tag.PostKeys[j];
+                     list += "<li><a href='/Posts/" + post + "'>" + post + "</a></li>";
+                 }
+                 list += "</ul></li>";
+                 
+                 tagList.append(list);
              }
          });
     });

@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>More dependable than (my) memory</title>
+        <link type="text/css" rel="stylesheet" href="/css/site.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+        <!-- Scripts --> 
+        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>        
+    </head>
+    <body>
+        <header class="navbar navbar-static-top bs-docs-nav">
+            <nav class="navbar navbar-fixed-top">
+                <div id='banner' class="container">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/search.html">Search</a></li>
+                        <li><a href="/tags.html">Tags</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="body" class="container">
+            <h1>Find which event handlers are bound on a form.</h1>
+
+<p>Dynamics CRM gives you the ability through the front-end to bind event handlers to a set of ui events.  </p>
+
+<p><img src='handler-list.png' alt='Event Handler List' /></p>
+
+<p>This is one of the most likely areas to break during an upgrade, so I wanted to get a list of <strong>all</strong> event handlers in the system so we had an idea of what needed to be tested. Unfortunately after quite a bit of poking around, it became clear that this info isn't <em>super</em> easy to pull out of the SQL database. The problem is that this info is stored in the FormXml field of the SystemForm table. </p>
+
+<p><img src='handler-xml.png' alt='Event Handler Xml' /></p>
+
+<p>Without being super familiar with querying against XML data in MSSQL, this took quite a bit of research. Posting the result </p>
+
+<pre><code class="sql">
+WITH x AS 
+(
+       SELECT FormId, e.Name, CAST(FormXml AS Xml) FormXml 
+       FROM SystemForm sf
+       JOIN Entity e ON sf.ObjectTypeCode = e.ObjectTypeCode AND e.OverwriteTime = '1900-01-01 00:00:00.000'
+       WHERE e.Name = 'Account'
+)
+, y AS 
+(
+       SELECT 
+              x.FormId,
+              x.Name Entity, 
+              x.FormXml, -- Uncomment to see the full form xml
+              t.c.value('@name', 'varchar(max)') HandlerName,
+              t.c.value('@attribute', 'varchar(max)') AttributeName,
+              a.b.value('@libraryName', 'varchar(max)') Library,
+              a.b.value('@functionName', 'varchar(max)') FunctionName,
+              a.b.value('@enabled', 'varchar(16)') [Enabled],
+              t.c.query('.') [t.c.query], 
+              a.b.query('.') [a.b.query]
+       FROM  x
+       CROSS APPLY x.FormXml.nodes('/form/events/event') T(c)
+       OUTER APPLY t.c.nodes('Handlers/Handler') a(b)
+       WHERE t.c.value('count(Handlers/Handler)', 'int') > 0
+)
+
+SELECT 
+       *
+FROM y 
+-- WHERE Enabled = 'true' -- This will exclude non-attribute related rows
+ORDER BY y.Entity, y.HandlerName, y.Library, y.FunctionName
+</code>
+</pre>  
+        </div>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+    </body>
+</html>
