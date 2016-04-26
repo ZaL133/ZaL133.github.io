@@ -32,5 +32,16 @@
       "Dynamics CRM",
       "XrmToolbox"
     ]
+  },
+  {
+    "Key": "2016-04-26-Dynamics-CRM-IFD-Without-Login-Internally",
+    "PostDate": "2016-04-26T00:00:00",
+    "PostTitle": "Dynamics-CRM-IFD-Without-Login-Internally",
+    "Tags": [
+      "Dynamics CRM",
+      "Authentication",
+      "IFD",
+      "ADFS"
+    ]
   }
 ]

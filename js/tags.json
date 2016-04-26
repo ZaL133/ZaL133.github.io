@@ -21,13 +21,32 @@
     "TagName": "Dynamics CRM",
     "PostKeys": [
       "2016-02-17-Dynamics-CRM-Find-event-handlers-for-form",
-      "2016-02-19-Cant-connect-to-xrmtoolbox"
+      "2016-02-19-Cant-connect-to-xrmtoolbox",
+      "2016-04-26-Dynamics-CRM-IFD-Without-Login-Internally"
     ]
   },
   {
     "TagName": "XrmToolbox",
     "PostKeys": [
       "2016-02-19-Cant-connect-to-xrmtoolbox"
+    ]
+  },
+  {
+    "TagName": "Authentication",
+    "PostKeys": [
+      "2016-04-26-Dynamics-CRM-IFD-Without-Login-Internally"
+    ]
+  },
+  {
+    "TagName": "IFD",
+    "PostKeys": [
+      "2016-04-26-Dynamics-CRM-IFD-Without-Login-Internally"
+    ]
+  },
+  {
+    "TagName": "ADFS",
+    "PostKeys": [
+      "2016-04-26-Dynamics-CRM-IFD-Without-Login-Internally"
     ]
   }
 ]
