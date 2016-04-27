@@ -26,26 +26,17 @@
             </nav>
         </header>
         <div id="body" class="container">
-            <p>
-    This blog aims to provide a place for me to document crap that is one of 
-    <ol>
-        <li>A pain to find</li>
-        <li>I frequently look up</li>
-        <li>I want to remember</li>
-    </ol>
-    Also, I'm experimenting with github pages. 
-</p>
+            <h1>How to start IIS Express from the command line</h1>
 
-<div>
-<ul>
-	<li><a href='/Posts/2016-02-05-Redirect/index.html'>2016-02-05 - Redirect</a></li>
-	<li><a href='/Posts/2016-02-15-NuGet/index.html'>2016-02-15 - NuGet</a></li>
-	<li><a href='/Posts/2016-02-17-Dynamics-CRM-Find-event-handlers-for-form/index.html'>2016-02-17 - Dynamics-CRM-Find-event-handlers-for-form</a></li>
-	<li><a href='/Posts/2016-02-19-Cant-connect-to-xrmtoolbox/index.html'>2016-02-19 - Cant-connect-to-xrmtoolbox</a></li>
-	<li><a href='/Posts/2016-04-26-Dynamics-CRM-IFD-Without-Login-Internally/index.html'>2016-04-26 - Dynamics-CRM-IFD-Without-Login-Internally</a></li>
-	<li><a href='/Posts/2016-04-27-Start-IIS-Express-from-the-command-line/index.html'>2016-04-27 - Start-IIS-Express-from-the-command-line</a></li>
-</ul>
-</div>
+<p>This is something that comes up a lot which I can never seem to remember. I don't want to configure a new website every time I want to treat a directory like a site.</p>
+
+<pre>
+    <code>
+        C:>cd "C:\Program Files (x86)\IIS Express"
+        C:\Program Files (x86)\IIS Express>iisexpress.exe /path:{path_to_directory} /port:{portnumber}
+        C:\Program Files (x86)\IIS Express>iexplore "http://localhost:{portnumber}"
+    </code>
+</pre>
         </div>
         <script>
             hljs.initHighlightingOnLoad();

@@ -48,5 +48,14 @@
       "IFD",
       "ADFS"
     ]
+  },
+  {
+    "Key": "2016-04-27-Start-IIS-Express-from-the-command-line",
+    "PostDate": "2016-04-27T00:00:00",
+    "PostTitle": "Start-IIS-Express-from-the-command-line",
+    "PostBody": "<html>\r\n    <head>\r\n        <meta charset=\"utf-8\" />\r\n        <title>More dependable than (my) memory</title>\r\n        <link type=\"text/css\" rel=\"stylesheet\" href=\"/css/site.css\" />\r\n        <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css\">\r\n        <!-- Latest compiled and minified CSS -->\r\n        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" integrity=\"sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7\" crossorigin=\"anonymous\">\r\n        \r\n        <!-- Scripts --> \r\n        <script src=\"//code.jquery.com/jquery-2.2.0.min.js\"></script>        \r\n        <script src=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js\"></script>\r\n        <!-- Latest compiled and minified JavaScript -->\r\n        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\" integrity=\"sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS\" crossorigin=\"anonymous\"></script>        \r\n    </head>\r\n    <body>\r\n        <header class=\"navbar navbar-static-top bs-docs-nav\">\r\n            <nav class=\"navbar navbar-fixed-top\">\r\n                <div id='banner' class=\"container\">\r\n                    <ul class=\"nav navbar-nav\">\r\n                        <li><a href=\"/\">Home</a></li>\r\n                        <li><a href=\"/search.html\">Search</a></li>\r\n                        <li><a href=\"/tags.html\">Tags</a></li>\r\n                    </ul>\r\n                </div>\r\n            </nav>\r\n        </header>\r\n        <div id=\"body\" class=\"container\">\r\n            <h1>How to start IIS Express from the command line</h1>\n\n<p>This is something that comes up a lot which I can never seem to remember. I don't want to configure a new website every time I want to treat a directory like a site.</p>\n\n<pre>\n    <code>\n        C:>cd \"C:\\Program Files (x86)\\IIS Express\"\n        C:\\Program Files (x86)\\IIS Express>iisexpress.exe /path:{path_to_directory} /port:{portnumber}\n        C:\\Program Files (x86)\\IIS Express>iexplore \"http://localhost:{portnumber}\"\n    </code>\n</pre>\r\n        </div>\r\n        <script>\r\n            hljs.initHighlightingOnLoad();\r\n        </script>\r\n    </body>\r\n</html>",
+    "Tags": [
+      "IIS Express"
+    ]
   }
 ]
