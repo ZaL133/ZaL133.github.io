@@ -19,6 +19,7 @@
         $.ajax("/js/postSummaries.json")
          .done(function(results) {
              postSummaries = results;
+             findPosts("");
          });
          
        $("#iSearch").keyup(function() {
@@ -45,7 +46,7 @@
         
         // No term - no results
         if (!searchTerm) {
-            return rv;
+            return postSummaries;
         }
         
         for(var i = 0; i < postSummaries.length; i++) {

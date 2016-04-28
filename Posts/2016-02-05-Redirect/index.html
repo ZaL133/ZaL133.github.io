@@ -26,83 +26,62 @@
             </nav>
         </header>
         <div id="body" class="container">
-            <p><!DOCTYPE html>
-<html>
-        <h1>Redirect</h1>
-        <p class="description">
-            I can never remember which method to return for an MVC redirect.
-            <ul>
-                <li><a href="#redirect">Redirect</a></li>
-                <li><a href="#redirectPerm">RedirectPermanent</a></li>
-                <li><a href="#redirectAction">RedirectToAction, RedirectToActionPermanent</a></li>
-                <li><a href="#redirectRoute">RedirectToRoute, RedirectToRoutePermanent</a></li>
-                <li><a href="#transfer">Transfer, TransferRequest</a></li>
-            </ul>
-        </p>
-        <div>
-            The main differences between the base and the *Permantent are the <code>Redirect</code> will return a <a href="https://en.wikipedia.org/wiki/HTTP_302">302 (found)</a>, while the <code>RedirectPermanent</code> will return a <a href="https://en.wikipedia.org/wiki/HTTP_301">301 (Moved Permantently) </a>
-        </div></p>
+            <h1>Redirect</h1>
 
-<pre><code>    &lt;div id="redirect" class="section"&gt;
-        &lt;h2&gt;Redirect&lt;/h2&gt;
-        Returns a 302 (Found) to the given url
-        &lt;div&gt;
-            &lt;img src="RedirMethod.png" alt="Redirect Method" /&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;img src="RedirHeaders.png" alt="Redirect Headers" /&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+<p>I can never remember which method to return for an MVC redirect.</p>
 
-    &lt;div id="redirectPerm" class="section"&gt;
-        &lt;h2&gt;Redirect Permanent&lt;/h2&gt;
-        Returns a 301 (Moved Permanently) to the given url
-        &lt;div&gt;
-            &lt;img src="RedirPermMethod.png" alt="Redirect Permanent Method" /&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;img src="RedirPermHeaders.png" alt="Redirect Permanent Headers" /&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+<ul>
+<li><a href="#redirect">Redirect</a></li>
+<li><a href="#redirectPerm">RedirectPermanent</a></li>
+<li><a href="#redirectAction">RedirectToAction, RedirectToActionPermanent</a></li>
+<li><a href="#redirectRoute">RedirectToRoute, RedirectToRoutePermanent</a></li>
+<li><a href="#transfer">Transfer, TransferRequest</a>&lt;</li>
+</ul>
 
-    &lt;div id="redirectAction"&gt;
-        &lt;h2&gt;RedirectToAction, RedirectToActionPermanent&lt;/h2&gt;
-        &lt;p&gt;These work the same as the Redirect(Permanent) methods, but are formed MVC-ish in that you specify the action, controller, and model as you would using the &lt;code&gt;@Url.Action&lt;/code&gt; helper method or &lt;code&gt;@Html.ActionLink&lt;/code&gt;
-        &lt;div&gt;
-            &lt;img src="RedirActionMethod.png" alt="Redirect Permanent Method" /&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;img src="RedirActionHeaders.png" alt="Redirect Permanent Headers" /&gt;
-        &lt;/div&gt;            
-    &lt;/div&gt;
+<p>The main differences between the base and the *Permantent are the <code>Redirect</code> will return a <a href="https://en.wikipedia.org/wiki/HTTP_302">302 (found)</a>, while the <code>RedirectPermanent</code> will return a <a href="https://en.wikipedia.org/wiki/HTTP_301">301 (Moved Permantently) </a></p>
 
-    &lt;div id="redirectRoute"&gt;
-        &lt;h2&gt;RedirectToRoute, RedirectToRoutePermanent&lt;/h2&gt;
-        &lt;p&gt;These methods allow you to specify the route name (as specified in your RouteConfig.cs and stored in your &lt;a href="https://msdn.microsoft.com/en-us/library/system.web.routing.routetable.routes.aspx"&gt;RouteTable&lt;/a&gt; ) &amp; values rather than the Action/Controller values.  &lt;/p&gt;
-        &lt;div&gt;
-            &lt;img src="RedirRouteMethod.png" alt="Redirect Permanent Method" /&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;img src="RedirRouteHeaders.png" alt="Redirect Permanent Headers" /&gt;
-        &lt;/div&gt;            
-    &lt;/div&gt;
+<h2>Redirect <a name="redirect"></a></h2>
 
-    &lt;div id="transfer" class="section"&gt;
-        &lt;h2&gt;Transfer, TransferRequest&lt;/h2&gt;
-        &lt;p&gt;These can be used to execute a different url and return the results&lt;br&gt;
-        &lt;code&gt;Transfer&lt;/code&gt; is used in &lt; IIS7&lt;br&gt;
-        &lt;code&gt;TransferRequest&lt;/code&gt; is used in &lt;a href="http://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/how-to-take-advantage-of-the-iis-integrated-pipeline"&gt;Integrated Pipeline Mode&lt;/a&gt;
-        &lt;/p&gt;
-        &lt;div&gt;
-            &lt;img src="TransferRequestMethod.png" alt="Transfer Request Method" /&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;img src="TransferRequestHeaders.png" alt="Transfer Request Headers" /&gt;
-        &lt;/div&gt;                
-    &lt;/div&gt;
-</code></pre>
+<p>Returns a 302 (Found) to the given url</p>
 
-<p></html></p>
+<p><img src="RedirMethod.png" alt="Redirect Method" /></p>
+
+<p><img src="RedirHeaders.png" alt="Redirect Headers" /></p>
+
+<h2>Redirect Permanent <a name="redirectPerm"></a></h2>
+
+<p>Returns a 301 (Moved Permanently) to the given url</p>
+
+<p><img src="RedirPermMethod.png" alt="Redirect Permanent Method" /></p>
+
+<p><img src="RedirPermHeaders.png" alt="Redirect Permanent Headers" /></p>
+
+<h2>RedirectToAction, RedirectToActionPermanent <a name="redirectAction"></a></h2>
+
+<p>These work the same as the Redirect(Permanent) methods, but are formed MVC-ish in that you specify the action, controller, and model as you would using the <code>@Url.Action</code> helper method or <code>@Html.ActionLink</code></p>
+
+<p><img src="RedirActionMethod.png" alt="Redirect Permanent Method" /></p>
+
+<p><img src="RedirActionHeaders.png" alt="Redirect Permanent Headers" /></p>
+
+<h2>RedirectToRoute, RedirectToRoutePermanent <a name="redirectRoute"></a></h2>
+
+<p>These methods allow you to specify the route name (as specified in your RouteConfig.cs and stored in your <a href="https://msdn.microsoft.com/en-us/library/system.web.routing.routetable.routes.aspx">RouteTable</a> ) &amp; values rather than the Action/Controller values.</p>
+
+<p><img src="RedirRouteMethod.png" alt="Redirect Permanent Method" /></p>
+
+<p><img src="RedirRouteHeaders.png" alt="Redirect Permanent Headers" /></p>
+
+<h2>Transfer, TransferRequest <a name="transfer"></a></h2>
+
+<p>These can be used to execute a different url and return the results</p>
+
+<p><code>Transfer</code> is used in &lt; IIS7<br>
+<code>TransferRequest</code> is used in <a href="http://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/how-to-take-advantage-of-the-iis-integrated-pipeline">Integrated Pipeline Mode</a></p>
+
+<p><img src="TransferRequestMethod.png" alt="Transfer Request Method" /></p>
+
+<p><img src="TransferRequestHeaders.png" alt="Transfer Request Headers" /></p>
         </div>
         <script>
             hljs.initHighlightingOnLoad();
