@@ -44,7 +44,7 @@
     function findPosts(searchTerm) {
         var rv = [];
         
-        // No term - no results
+        // No term - all results
         if (!searchTerm) {
             return postSummaries;
         }
