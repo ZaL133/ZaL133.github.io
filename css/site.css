@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     padding: 0;
     margin: 0;
     background: rgba(70, 70, 70, .2);
@@ -10,6 +10,21 @@ header {
     background-color: rgba(20, 100, 27, .5);
 }
 
+header ul {
+    list-style: none;
+    margin: 0; padding: 0;
+}
+
+header ul li { 
+    display: inline-block;
+    padding: 12px; 
+}
+
 #body {
     padding: 10px;
+}
+
+.wrapper {
+    max-width: 1024px;
+    margin: auto;
 }
