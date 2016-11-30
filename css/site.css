@@ -10,7 +10,12 @@ body {
     font-size: 18px;
     padding: 0;
     margin: 0;
-    background-color: #333;
+    background-color: #cacaca;
+}
+
+img { 
+    border: none;
+    max-width: 100%;
 }
 
 header {
@@ -27,6 +32,10 @@ header ul li {
     padding: 12px; 
 }
 
+header ul li:hover {
+    background: rgba(100, 100, 100, .5);   
+}
+
 #body {
     padding: 10px;
 }
@@ -34,10 +43,10 @@ header ul li {
 .wrapper {
     max-width: 1024px;
     margin: auto;
-    background: rgba(225,225, 225, .2);    
+    background: rgba(225,225, 225, .5);    
 }
 
 .accent {
     height: 5px; 
-    background-color: #03492b;
+    background-color: #5d5d5d;
 }
