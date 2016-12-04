@@ -1,8 +1,10 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">        
-        <title>Unspecified Behaviour</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" value="Zeph Levin">
+
+        <title>(un)specified behaviour</title>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
         
         <!-- Scripts --> 
@@ -48,7 +50,7 @@
 
 <p><img src='not-good.png' alt='Not Good' /></p>
 
-<p>This particular quirk is noted <a href="http://stackoverflow.com/a/27384730">on stackoverflow.com</a> which essentially states that setting a fixed height on an element with a display of table-cell is undefined behavior. Browsers are free to choose how to handle. </p>
+<p>This particular quirk is noted <a href="http://stackoverflow.com/a/27384730">on stackoverflow.com</a> which essentially states that setting a fixed height on an element with a display mode of table-cell is undefined behavior. Browsers are free to choose how to handle. </p>
 
 <p>So to fix this we just need to get some CSS on the page which sets the display mode of a table cell with a fixed height to inline-block. Tested this works in dev tools. Since this is in an iframe, the only place this can possible come from is the sharepoint server</p>
 
@@ -83,6 +85,14 @@
         </div>
         <script>
             hljs.initHighlightingOnLoad();
+            $(function() {
+
+                // If you click on an image open it in a new window
+                $("img").click(function() {
+                    var url = $(this).attr("src");
+                    window.open(url, "_blank");
+                });
+            });
         </script>
     </body>
 </html>

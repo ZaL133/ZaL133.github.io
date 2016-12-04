@@ -1,8 +1,10 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">        
-        <title>Unspecified Behaviour</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" value="Zeph Levin">
+
+        <title>(un)specified behaviour</title>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
         
         <!-- Scripts --> 
@@ -32,6 +34,14 @@
         </div>
         <script>
             hljs.initHighlightingOnLoad();
+            $(function() {
+
+                // If you click on an image open it in a new window
+                $("img").click(function() {
+                    var url = $(this).attr("src");
+                    window.open(url, "_blank");
+                });
+            });
         </script>
     </body>
 </html>

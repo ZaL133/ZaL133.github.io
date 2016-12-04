@@ -41,7 +41,8 @@
       "Dynamics CRM",
       "Authentication",
       "IFD",
-      "ADFS"
+      "ADFS",
+      "Unsupported"
     ]
   },
   {
@@ -59,7 +60,17 @@
     "Tags": [
       "Dynamics CRM",
       "Sharepoint",
-      "Unspecified Behavior"
+      "Unsupported"
+    ]
+  },
+  {
+    "Key": "2016-12-03-Crm-2016-8.1.0.359-object-expected",
+    "PostDate": "2016-12-03T00:00:00",
+    "PostTitle": "Crm-2016-8.1.0.359-object-expected",
+    "Tags": [
+      "Dynamics CRM",
+      "Sharepoint",
+      "Unsupported"
     ]
   }
 ]
