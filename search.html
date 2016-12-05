@@ -48,7 +48,7 @@
         rowTemplate = "<tr><td>{{DATE}}</td><td><a href='{{LINK}}'>{{TITLE}}</a></td></tr>";
         
     $(function() {
-        $.ajax("/js/postSummaries.json")
+        $.ajax("/js/posts.json")
          .done(function(results) {
              postSummaries = results;
              findPosts("");
@@ -84,7 +84,10 @@
         for(var i = 0; i < postSummaries.length; i++) {
             var post = postSummaries[i];
             
-            if (post.PostTitle.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+            if (post.PostTitle.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+                || post.PostBody.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+
+                // Add
                 rv.push(post);
             }
         }
