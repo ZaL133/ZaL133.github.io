@@ -1,6 +1,6 @@
-Crm 2016 8.1.0.359 - object expected
+# Crm 2016 8.1.0.359 - object expected
 
-About a month before upgrading our system from Dynamics CRM 2011 to 2016, we were troubleshooting performance and specifically form load times. Nothing seemed to work and we had created an ootb organization with no customizations, so most of this time was spent trying to tweak IIS setting. Nothing seemed to get the TTFB time below about .3 seconds which actually feels pretty slow and with 200+ resources on a page, adds up. We had done all our upgrade testing and prep in the rtm version and saw that there was a service pack available. 
+About a month before upgrading our system from Dynamics CRM 2011 to 2016, we were troubleshooting performance and specifically form load times. Nothing seemed to work and we had created an ootb organization with no customizations, so most of this time was spent trying to tweak IIS setting. Nothing seemed to get the [TTFB](https://en.wikipedia.org/wiki/Time_To_First_Byte) time below about .3 seconds which actually feels pretty slow and with 200+ resources on a page, adds up. We had done all our upgrade testing and prep in the rtm version and saw that there was a service pack available. 
 
 After installing this service page - things are MUCH better - the screen transitions are much much snappier and the TTFB is down to about .056 seconds. 
 
@@ -8,13 +8,46 @@ We ran some quick tests to check for regressions and were on our way.
 
 About a week after launch we start getting complaints about these annoying Microsoft errors popping up sporadically. 
 
-[error screen]
+<img src='crm-has-encountered-an-error.png' alt='Micrsoft Dynamics CRM has encountered an error' />
 
 These happen in crm when there is an unhandled JavaScript exception. Since we do a fair bit of js customization in our org, these errors are critical to letting the user know that something has gone wrong. (I think there should be an option to send these exceptions to ME INSTEAD OF MICROSOFT, but I digress).
 
 So we find out some repro information from a user and are able to replicate the error - which only happens in internet explorer (naturally). It happens most often when leaving the contact form either by saving or closing. Crm of course catches these errors and them and waits to show them to a user until the least relevant time possible. Below is the exception you get by clicking "see what this error report contains"
 
-[error]
+<pre><code>&lt;CrmScriptErrorReport&gt;
+  &lt;ReportVersion&gt;1.0&lt;/ReportVersion&gt;
+  &lt;ScriptErrorDetails&gt;
+   &lt;Message&gt;Object expected&lt;/Message&gt;
+   &lt;Line&gt;15499&lt;/Line&gt;
+   &lt;URL&gt;&lt;/URL&gt;
+   &lt;PageURL&gt;/form/page.aspx?lcid=1033&amp;themeId=351f664e-a6d1-4733-1cf7-b3235fca2d91&amp;tstamp=11053490&amp;updateTimeStamp=636135147600972731&amp;userts=131237789654599814&amp;ver=-580792269#etc=1&amp;extraqs=%3f_CreateFromId%3d%257bE5321C35-CB2F-4EBB-A4CC-77FAA0C43389%257d%26_CreateFromType%3d4300%26_gridType%3d1%26etc%3d1%26id%3d%257b5DC1AD2E-4F4B-460D-A748-958043CD4CB2%257d%26rskey%3d%257b00000000-0000-0000-00AA-000010001200%257d&amp;pagemode=iframe&amp;pagetype=entityrecord&amp;rskey=%7b00000000-0000-0000-00AA-000010001200%7d&amp;counter=1479332942490&lt;/PageURL&gt;
+   &lt;Function&gt;anonymousr:Objectexpected&lt;/Function&gt;
+   &lt;FunctionRaw&gt;TypeError: Object expected&lt;/FunctionRaw&gt;
+   &lt;CallStack&gt;
+    &lt;Function&gt;anonymousr:Objectexpected&lt;/Function&gt;
+   &lt;/CallStack&gt;
+  &lt;/ScriptErrorDetails&gt;
+  &lt;ClientInformation&gt;
+   &lt;BrowserUserAgent&gt;Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E; rv:11.0) like Gecko&lt;/BrowserUserAgent&gt;
+   &lt;BrowserLanguage&gt;en-US&lt;/BrowserLanguage&gt;
+   &lt;SystemLanguage&gt;en-US&lt;/SystemLanguage&gt;
+   &lt;UserLanguage&gt;en-US&lt;/UserLanguage&gt;
+   &lt;ScreenResolution&gt;1920x1080&lt;/ScreenResolution&gt;
+   &lt;ClientName&gt;Web&lt;/ClientName&gt;
+   &lt;ClienState&gt;Online&lt;/ClienState&gt;
+   &lt;ClientTime&gt;2016-11-16T16:49:03&lt;/ClientTime&gt;
+  &lt;/ClientInformation&gt;
+  &lt;ServerInformation&gt;
+    &lt;OrgLanguage&gt;1033&lt;/OrgLanguage&gt;
+    &lt;OrgCulture&gt;1033&lt;/OrgCulture&gt;
+    &lt;UserLanguage&gt;1033&lt;/UserLanguage&gt;
+    &lt;UserCulture&gt;1033&lt;/UserCulture&gt;
+    &lt;OrgID&gt;{0ED23A84-6DC6-E311-99A3-9C8E99160E80}&lt;/OrgID&gt;
+    &lt;UserID&gt;{BFF92392-470C-46C9-A71B-83988DEEB489}&lt;/UserID&gt;
+    &lt;CRMVersion&gt;8.1.0.359&lt;/CRMVersion&gt;
+  &lt;/ServerInformation&gt;
+&lt;/CrmScriptErrorReport&gt;
+</code></pre>
 
 So that's not very helpful. The message is super generic (object expected) and the call stack doesn't look very helpful either. Enough to google though.
 
