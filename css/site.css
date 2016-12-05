@@ -51,3 +51,25 @@ header ul li:hover {
     height: 5px; 
     background-color: #5d5d5d;
 }
+
+table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+table tbody tr:hover {
+    background-color: rgba(150, 150, 15, .7);
+}
+
+table thead th {
+    text-decoration: underline;
+    padding: 10px;
+    border: solid 1px #333;
+    border-top: none;
+}
+
+table tbody td {
+    padding: 10px 0px; 
+    border-bottom: solid 1px #999;
+}
