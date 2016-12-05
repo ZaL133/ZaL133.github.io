@@ -16,7 +16,7 @@ I can't get a simple app using CrmServiceClient to log in to Crm 2016 IFD
 
         static void Main(string[] args)
         {
-            using (var ctx = new gnyhacontext(_service))
+            using (var ctx = new organizationcontext(_service))
             {
                 foreach (var account in ctx.AccountSet.Where(x => x.Name.StartsWith("Al")))
                 {
@@ -33,7 +33,7 @@ Looking through the crm sdk sample code, I put together a simple connection usin
 
 <pre><code>        static void Main(string[] args)
         {
-            var organizatonUri = new Uri("https://crmdev.gnyha.org/Dynamics/XRMServices/2011/Organization.svc");
+            var organizatonUri = new Uri("https://crmdev.organization.com/orgname/XRMServices/2011/Organization.svc");
             AuthenticationCredentials credentials = new AuthenticationCredentials();
             credentials.ClientCredentials.UserName.UserName = "username";
             credentials.ClientCredentials.UserName.Password = "password";
@@ -44,7 +44,7 @@ Looking through the crm sdk sample code, I put together a simple connection usin
             var organizationServiceProxy = new OrganizationServiceProxy(serviceManagement, token.SecurityTokenResponse);
             organizationServiceProxy.EnableProxyTypes();
             
-            using (var ctx = new gnyhacontext(organizationServiceProxy))
+            using (var ctx = new organizationcontext(organizationServiceProxy))
             {
                 foreach (var account in ctx.AccountSet.Where(x => x.Name.StartsWith("Al")))
                 {

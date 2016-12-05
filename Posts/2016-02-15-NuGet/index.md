@@ -38,7 +38,6 @@ Next I want to add a class which handles some repetitive tasks like setting up a
 <pre>
 using System;
 using System.Configuration;
-using GNYHA.CRM.Dynamics;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Tooling.Connector;
 
