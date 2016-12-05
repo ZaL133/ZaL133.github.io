@@ -58,18 +58,7 @@
           var searchTerm = $(this).val(),
               searchBody = $("#searchBody");
               
-          var matches = findPosts(searchTerm);
-          
-          // Clear out the old results
-          searchBody.html("");
-          
-          
-          for(var i = 0; i < matches.length; i++) {
-              var match = matches[i];
-              searchBody.append(rowTemplate.replace("{{DATE}}", match.PostDate)
-                                           .replace("{{TITLE}}", match.PostTitle)
-                                           .replace("{{LINK}}", "/Posts/" + match.Key)); 
-          }
+          findPosts(searchTerm);
        });
     });
     
@@ -78,7 +67,7 @@
         
         // No term - all results
         if (!searchTerm) {
-            return postSummaries;
+            rv = postSummaries;
         }
         
         for(var i = 0; i < postSummaries.length; i++) {
@@ -91,7 +80,21 @@
                 rv.push(post);
             }
         }
-        return rv;
+        
+        bindMatches(rv);
+    }
+
+    function bindMatches(matches) {
+          // Clear out the old results
+          searchBody.html("");
+          
+          
+          for(var i = 0; i < matches.length; i++) {
+              var match = matches[i];
+              searchBody.append(rowTemplate.replace("{{DATE}}", match.PostDate)
+                                           .replace("{{TITLE}}", match.PostTitle)
+                                           .replace("{{LINK}}", "/Posts/" + match.Key)); 
+          }
     }
 </script>
             </div>
