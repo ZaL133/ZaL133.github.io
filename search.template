@@ -19,7 +19,7 @@
         $.ajax("/js/posts.json")
          .done(function(results) {
              postSummaries = results;
-             findPosts("");
+             findPosts();
          });
          
        $("#iSearch").keyup(function() {
