@@ -23,8 +23,7 @@
          });
          
        $("#iSearch").keyup(function() {
-          var searchTerm = $(this).val(),
-              searchBody = $("#searchBody");
+          var searchTerm = $(this).val();
               
           findPosts(searchTerm);
        });
@@ -53,15 +52,17 @@
     }
 
     function bindMatches(matches) {
-          // Clear out the old results
-          searchBody.html("");
-          
-          
-          for(var i = 0; i < matches.length; i++) {
-              var match = matches[i];
-              searchBody.append(rowTemplate.replace("{{DATE}}", match.PostDate)
-                                           .replace("{{TITLE}}", match.PostTitle)
-                                           .replace("{{LINK}}", "/Posts/" + match.Key)); 
-          }
+        var searchBody = $("#searchBody");
+    
+        // Clear out the old results
+        searchBody.html("");
+        
+        
+        for(var i = 0; i < matches.length; i++) {
+            var match = matches[i];
+            searchBody.append(rowTemplate.replace("{{DATE}}", match.PostDate)
+                                        .replace("{{TITLE}}", match.PostTitle)
+                                        .replace("{{LINK}}", "/Posts/" + match.Key)); 
+        }
     }
 </script>
