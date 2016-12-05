@@ -36,16 +36,16 @@
         // No term - all results
         if (!searchTerm) {
             rv = postSummaries;
-        }
-        
-        for(var i = 0; i < postSummaries.length; i++) {
-            var post = postSummaries[i];
-            
-            if (post.PostTitle.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-                || post.PostBody.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+        } else {
+            for(var i = 0; i < postSummaries.length; i++) {
+                var post = postSummaries[i];
+                
+                if (post.PostTitle.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+                    || post.PostBody.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
 
-                // Add
-                rv.push(post);
+                    // Add
+                    rv.push(post);
+                }
             }
         }
         
