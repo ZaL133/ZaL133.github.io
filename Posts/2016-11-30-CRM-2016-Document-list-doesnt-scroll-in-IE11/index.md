@@ -13,6 +13,8 @@ Oddly, this wasn't the case in crm 2011 - which we upgraded from, and isn't an i
 
 ### time to fire up the dev tools
 
+<div class='dt'>2016-11-30</div>
+
 This was actually a pretty easy issue to spot. If you look at the HTML inspector, you can see that the document list is in a div with `height: 100%`, and that div is in a table cell with a fixed height. The height of this cell changes if you resize the window. 
 
 In IE11 specifically though, if you check the properties of the table cell you can see that the fixed height isn't being respected by the browser. The table cell is actually expanding to the size of its inner content, and so when the div is sized to 100% there is no overflow and nothing to scroll. 

@@ -1,5 +1,7 @@
 # Nuget
 
+<div class='dt'>2016-02-15</div>
+
 **Problem**: One of the things I work on is Microsoft Dynamics CRM (Customer Relationship Management). This is a web based crm tool made by.... Microsoft. One of the great things about Dynamics CRM is that it provides data access via a very nice sdk. We've got about a dozen different tools & utilities which talk to the CRM database via the SDK. 
 
     Recently we began the process of upgrading to Dynamics 2016. This invoved a new SDK as well as upgrading our code to use the new early-bound classes. 

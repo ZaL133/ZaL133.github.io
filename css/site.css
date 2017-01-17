@@ -73,3 +73,8 @@ table tbody td {
     padding: 10px 0px; 
     border-bottom: solid 1px #999;
 }
+
+.dt {
+    font-size: .8em;
+    font-style: italic;
+}

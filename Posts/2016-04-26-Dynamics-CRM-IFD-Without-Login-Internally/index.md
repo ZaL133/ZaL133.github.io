@@ -1,5 +1,7 @@
 # Using URL Rewrite to fix IFD access
 
+<div class='dt'>2016-04-26</div>
+
 ## Summary
 
 I want to use the IFD url for crm everywhere, but I don't want internal users to hit a login page

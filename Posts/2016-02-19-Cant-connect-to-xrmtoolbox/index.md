@@ -1,5 +1,7 @@
 **I can't seem to get XrmToolbox to connect to Dynamics 2016 which is configured for claims based authentication.** 
 
+<div class='dt'>2016-02-19</div>
+
 ## Research
 
 XrmToolbox uses the MscrmTools.Xrm.Connection 
