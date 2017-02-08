@@ -1,3 +1,2 @@
 Dynamics CRM
-Sharepoint
 Unsupported
