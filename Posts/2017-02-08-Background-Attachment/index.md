@@ -22,7 +22,7 @@ Scroll down to see what I mean.
 </style>
 
 <div class='panel'>
-    <div class='panel-image' style='background-image: url("IMG_2592.JPG"); '>
+    <div class='panel-image' style='background-image: url("IMG_2592.jpg"); '>
     </div>
     <div class='panel-body'>
         The CSS is very simple. 
