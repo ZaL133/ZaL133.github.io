@@ -52,6 +52,12 @@
     ]
   },
   {
+    "TagName": "Javascript",
+    "PostKeys": [
+      "2021-02-09-GoToWebinar-Captions-to-VTT"
+    ]
+  },
+  {
     "TagName": "MVC",
     "PostKeys": [
       "2016-02-05-Redirect"
@@ -75,6 +81,12 @@
       "2016-04-26-Dynamics-CRM-IFD-Without-Login-Internally",
       "2016-11-30-CRM-2016-Document-list-doesnt-scroll-in-IE11",
       "2016-12-03-Crm-2016-8.1.0.359-object-expected"
+    ]
+  },
+  {
+    "TagName": "Utilities",
+    "PostKeys": [
+      "2021-02-09-GoToWebinar-Captions-to-VTT"
     ]
   },
   {
