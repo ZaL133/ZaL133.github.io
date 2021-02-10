@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" value="Zeph Levin">
 
-        <title>(un)specified behaviour</title>
+        <title>(un)specified behaviour | {{PostTitleHuman}}</title>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
         
         <!-- Scripts --> 
@@ -59,8 +59,9 @@
 
                  var list = "<li>" + tag.TagName + "<ul>";
                  for(var j = 0; j < tag.PostKeys.length; j++) {
-                     var post = tag.PostKeys[j];
-                     list += "<li><a href='/Posts/" + post + "'>" + post + "</a></li>";
+                     var post       = tag.PostKeys[j];
+                     var postTitle  = tag.PostNames[j];
+                     list += "<li><a href='/Posts/" + post + "'>" + postTitle + "</a></li>";
                  }
                  list += "</ul></li>";
 

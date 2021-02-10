@@ -59,9 +59,11 @@
         
         
         for(var i = 0; i < matches.length; i++) {
-            var match = matches[i];
-            searchBody.append(rowTemplate.replace("{{DATE}}", match.PostDate)
-                                        .replace("{{TITLE}}", match.PostTitle)
+            var match       = matches[i];
+            var matchDate   = new Date(match.PostDate).toLocaleDateString();
+
+            searchBody.append(rowTemplate.replace("{{DATE}}", matchDate)
+                                        .replace("{{TITLE}}", match.PostTitleHuman)
                                         .replace("{{LINK}}", "/Posts/" + match.Key)); 
         }
     }

@@ -17,8 +17,9 @@
                  
                  var list = "<li>" + tag.TagName + "<ul>";
                  for(var j = 0; j < tag.PostKeys.length; j++) {
-                     var post = tag.PostKeys[j];
-                     list += "<li><a href='/Posts/" + post + "'>" + post + "</a></li>";
+                     var post       = tag.PostKeys[j];
+                     var postTitle  = tag.PostNames[j];
+                     list += "<li><a href='/Posts/" + post + "'>" + postTitle + "</a></li>";
                  }
                  list += "</ul></li>";
                  
