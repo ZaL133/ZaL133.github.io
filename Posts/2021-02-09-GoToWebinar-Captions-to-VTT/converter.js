@@ -1,6 +1,4 @@
 (function() {
-
-    // StackOverflow: https://stackoverflow.com/a/30740104/972250
     function saveTextAsFile() {
         var textToWrite = document.getElementById('after').value;
         var textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
@@ -35,7 +33,7 @@
             var line = parsed[i];
 
             rv.push(line.start + " --> " + line.end + " align:middle line:90%");
-            rv.push(parsed[i].text);
+            rv.push(parsed[i].text.replace("&", "&amp;"));
             rv.push("");
         }
 
@@ -50,16 +48,19 @@
     }
 
     function parseLines(lines) {
-        var rv = [], 
-            current = -1;
+        var rv = [];
 
         for(var i = 0; i < lines.length; i = i + 2) {
+            if (i == 0) rv.push({
+                start: getFormattedTimestamp("00:00"),
+                end:   getFormattedTimestamp(lines[i]),
+                text:   ""
+            });
+            else {
             rv.push({
-                    start: (i == 0 
-                                ? getFormattedTimestamp("00:00") 
-                                : getFormattedTimestamp(lines[i - 2])), 
-                    end: getFormattedTimestamp(lines[i]), 
-                    text: lines[i + 1] });
+                start:  getFormattedTimestamp(lines[i - 2]), 
+                end:    getFormattedTimestamp(lines[i]), 
+                text:   lines[i - 1] }); }
         }
 
         return rv;
